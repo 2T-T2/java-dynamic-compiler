@@ -2,7 +2,7 @@
 Javaを動的コンパイルするライブラリ
 
 ## セットアップ方法
-### mavenを使用した方法
+### mavenを使用し、セットアップを完了させる方法
 pom.xmlに下記を記載
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -24,7 +24,11 @@ pom.xmlに下記を記載
   </dependencies>
 </project>
 ```
-### ソースをダウンロードしビルドする方法
+### ソースからJarを生成し、セットアップを完了させる方法
+#### 前提条件
+- 環境変数 PATH に JDKのbinフォルダを設定してあること
+- 環境変数 PATH に Mavenのbinフォルダを設定してあること
+
 ソースダウンロードする
 ```bat
 curl -L -O "https://github.com/2T-T2/java-dynamic-compiler/archive/refs/heads/main.zip"
@@ -83,6 +87,8 @@ prjm.bat all
 [https://2t-t2.github.io/java-dynamic-compiler/](https://2t-t2.github.io/java-dynamic-compiler/)
 
 ### 補足
+<div><b><i>※pom.xml が存在しますが、mavenでのビルドは出来ません。。。</i></b></div>
+ビルドはprjm.batを使用して行ってください。
 ```bat
 prjm.bat help
 
