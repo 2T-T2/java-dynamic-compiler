@@ -80,7 +80,7 @@ prjm.bat all
 ```
 
 ### ドキュメント
-<a href="http://www.example.com">http://www.example.com</a>
+[https://2t-t2.github.io/java-dynamic-compiler/](https://2t-t2.github.io/java-dynamic-compiler/)
 
 ### 補足
 ```bat
