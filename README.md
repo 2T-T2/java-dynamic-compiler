@@ -2,7 +2,7 @@
 Javaを動的コンパイルするライブラリ
 
 ## セットアップ方法
-### mavenを使用し、セットアップを完了させる方法
+### mavenプロジェクトに追加する方法
 pom.xmlに下記を記載
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -24,7 +24,7 @@ pom.xmlに下記を記載
   </dependencies>
 </project>
 ```
-### ソースからJarを生成し、セットアップを完了させる方法
+### ソースからJarを生成する方法
 #### 前提条件
 - 環境変数 PATH に JDKのbinフォルダを設定してあること
 - 環境変数 PATH に Mavenのbinフォルダを設定してあること
@@ -37,8 +37,9 @@ curl -L -O "https://github.com/2T-T2/java-dynamic-compiler/archive/refs/heads/ma
 ```bat
 prjm.bat all
 ```
-上記実行後に、同フォルダに <b>rep\t_panda\compiler\t_panda.compiler.jar\0.0.0.0\t_panda.compiler.jar-0.0.0.0.jar</b> が生成される。
+上記実行後に、同フォルダに <b>rep\t_panda\compiler\t_panda.compiler.jar\0.0.0.0\t_panda.compiler.jar-0.0.0.0.jar</b> が生成される。<br>
 <div><b><i>※pom.xml が存在しますが、mavenでのビルドは出来ません。。。</i></b></div>
+生成された jar はモジュールパスに追加して使用してください。
 
 ### 使用例
 ```java
