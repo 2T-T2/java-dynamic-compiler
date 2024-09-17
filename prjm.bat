@@ -2,34 +2,34 @@ setlocal enabledelayedexpansion
 
 @echo off
 
-rem ƒ\[ƒXƒtƒ@ƒCƒ‹‚ÌƒGƒ“ƒR[ƒfƒBƒ“ƒO
+rem ã‚½ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
 set src_enc=utf8
-rem classƒtƒ@ƒCƒ‹o—ÍƒtƒHƒ‹ƒ_
+rem classãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›ãƒ•ã‚©ãƒ«ãƒ€
 set out_dir=.\out\
-rem jarƒtƒ@ƒCƒ‹o—ÍƒtƒHƒ‹ƒ_
+rem jarãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›ãƒ•ã‚©ãƒ«ãƒ€
 set dst_dir=.\dst\
-rem javadoco—ÍƒtƒHƒ‹ƒ_
-set doc_dir=.\javadoc\
-rem ƒ\[ƒXƒtƒ@ƒCƒ‹‚ÌŠi”[ƒtƒHƒ‹ƒ_
+rem javadocå‡ºåŠ›ãƒ•ã‚©ãƒ«ãƒ€
+set doc_dir=.\docs\
+rem ã‚½ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®æ ¼ç´ãƒ•ã‚©ãƒ«ãƒ€
 set src_dir=.\src\
-rem ˆË‘¶jarŠi”[ƒtƒHƒ‹ƒ_
+rem ä¾å­˜jaræ ¼ç´ãƒ•ã‚©ãƒ«ãƒ€
 set lib_dir=.\lib\
-rem ƒŠƒ\[ƒXijar‚ÉŠÜ‚ß‚éjƒtƒ@ƒCƒ‹‚ÌŠi”[ƒtƒHƒ‹ƒ_
+rem ãƒªã‚½ãƒ¼ã‚¹ï¼ˆjarã«å«ã‚ã‚‹ï¼‰ãƒ•ã‚¡ã‚¤ãƒ«ã®æ ¼ç´ãƒ•ã‚©ãƒ«ãƒ€
 set res_dir=.\res\
-rem mavenƒŠƒ|ƒWƒgƒŠì¬ƒtƒHƒ‹ƒ_
+rem mavenãƒªãƒã‚¸ãƒˆãƒªä½œæˆãƒ•ã‚©ãƒ«ãƒ€
 set rep_dir=.\rep\
 set rep_dir_uri=file:///%CD:\=/%%rep_dir:\=/%
-rem o—Íjarƒtƒ@ƒCƒ‹–¼
+rem å‡ºåŠ›jarãƒ•ã‚¡ã‚¤ãƒ«å
 set jar_name=t_panda.compiler.jar
-rem ƒRƒ“ƒpƒCƒ‹AƒA[ƒJƒCƒu‰»AƒhƒLƒ…ƒƒ“ƒg¶¬‚Ì‘ÎÛƒ‚ƒWƒ…[ƒ‹–¼
+rem ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã€ã‚¢ãƒ¼ã‚«ã‚¤ãƒ–åŒ–ã€ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆç”Ÿæˆã®å¯¾è±¡ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«å
 set mdl_name=t_panda.compiler
-rem mavenƒŠƒ|ƒWƒgƒŠì¬‚Ég—p‚·‚éPOMƒtƒ@ƒCƒ‹
+rem mavenãƒªãƒã‚¸ãƒˆãƒªä½œæˆæ™‚ã«ä½¿ç”¨ã™ã‚‹POMãƒ•ã‚¡ã‚¤ãƒ«
 set pom_name=pom.xml
 
-rem ƒGƒ‰[ƒƒbƒZ[ƒW
+rem ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 set error_msg=0
 
-REM ƒtƒHƒ‹ƒ_ì¬
+REM ãƒ•ã‚©ãƒ«ãƒ€ä½œæˆ
 If not exist %out_dir% mkdir %out_dir%
 If not exist %dst_dir% mkdir %dst_dir%
 If not exist %doc_dir% mkdir %doc_dir%
@@ -39,12 +39,12 @@ If not exist %res_dir% mkdir %res_dir%
 If not exist %rep_dir% mkdir %rep_dir%
 If not exist %src_dir%t_panda.compiler mkdir %src_dir%t_panda.compiler
 
-REM module-info.java ì¬
+REM module-info.java ä½œæˆ
 REM echo %src_dir%t_panda.compiler\module-info.java
 REM echo module t_panda.compiler { > %src_dir%t_panda.compiler\module-info.java
-REM echo     // requires /* transitive */ ˆË‘¶‚·‚éŠO•”ƒ‚ƒWƒ…[ƒ‹; >> %src_dir%t_panda.compiler\module-info.java
-REM echo     // opens ŠO•”ƒ‚ƒWƒ…[ƒ‹‚©‚çƒŠƒtƒŒƒNƒVƒ‡ƒ“‚ÅƒAƒNƒZƒX‚ğ‹–‰Â‚·‚éƒpƒbƒP[ƒW; >> %src_dir%t_panda.compiler\module-info.java
-REM echo     // exports ŠO•”ƒ‚ƒWƒ…[ƒ‹‚©‚çƒAƒNƒZƒX‚ğ‹–‰Â‚·‚éƒpƒbƒP[ƒW; >> %src_dir%t_panda.compiler\module-info.java
+REM echo     // requires /* transitive */ ä¾å­˜ã™ã‚‹å¤–éƒ¨ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«; >> %src_dir%t_panda.compiler\module-info.java
+REM echo     // opens å¤–éƒ¨ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‹ã‚‰ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã§ã‚¢ã‚¯ã‚»ã‚¹ã‚’è¨±å¯ã™ã‚‹ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸; >> %src_dir%t_panda.compiler\module-info.java
+REM echo     // exports å¤–éƒ¨ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‹ã‚‰ã‚¢ã‚¯ã‚»ã‚¹ã‚’è¨±å¯ã™ã‚‹ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸; >> %src_dir%t_panda.compiler\module-info.java
 REM echo } >> %src_dir%t_panda.compiler\module-info.java
 
 if "%~1"=="all" (
@@ -76,30 +76,30 @@ if "%help_disp_flg%"=="true" (
     echo.
 
     echo %~nx0 clean
-    echo     %lib_dir%, %out_dir%, %dst_dir%, %doc_dir% ‚ğƒNƒŠ[ƒ“‚µ‚Ü‚·
+    echo     %lib_dir%, %out_dir%, %dst_dir%, %doc_dir% ã‚’ã‚¯ãƒªãƒ¼ãƒ³ã—ã¾ã™
     echo.
     echo %~nx0 dl-depend
-    echo     %lib_dir% ‚É %pom_name% ‚Åw’è‚³‚ê‚½ˆË‘¶ƒtƒ@ƒCƒ‹‚ğƒ_ƒEƒ“ƒ[ƒh‚µ‚Ü‚·
+    echo     %lib_dir% ã« %pom_name% ã§æŒ‡å®šã•ã‚ŒãŸä¾å­˜ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¾ã™
     echo.
     echo %~nx0 compile
-    echo     %src_dir% ‚Ì“à—e‚ğƒRƒ“ƒpƒCƒ‹‚µ‚Ü‚·
-    echo     o—ÍæƒtƒHƒ‹ƒ_ %out_dir%
+    echo     %src_dir% ã®å†…å®¹ã‚’ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã—ã¾ã™
+    echo     å‡ºåŠ›å…ˆãƒ•ã‚©ãƒ«ãƒ€ %out_dir%
     echo.
     echo %~nx0 archive
-    echo     %out_dir%, %src_dir%, %res_dir% ‚ğƒA[ƒJƒCƒu‰»‚µ‚Äjar‚ğì¬‚µ‚Ü‚·
-    echo     o—Íæƒtƒ@ƒCƒ‹–¼ %dst_dir%%jar_name%
+    echo     %out_dir%, %src_dir%, %res_dir% ã‚’ã‚¢ãƒ¼ã‚«ã‚¤ãƒ–åŒ–ã—ã¦jarã‚’ä½œæˆã—ã¾ã™
+    echo     å‡ºåŠ›å…ˆãƒ•ã‚¡ã‚¤ãƒ«å %dst_dir%%jar_name%
     echo.
     echo %~nx0 mvnrep
-    echo     %dst_dir%%jar_name%, %pom_name% ‚©‚çmavenƒŠƒ|ƒWƒgƒŠ‚Ìì¬‚ğs‚¢‚Ü‚·
-    echo     o—Íæƒtƒ@ƒCƒ‹–¼ %dst_dir%%jar_name%
+    echo     %dst_dir%%jar_name%, %pom_name% ã‹ã‚‰mavenãƒªãƒã‚¸ãƒˆãƒªã®ä½œæˆã‚’è¡Œã„ã¾ã™
+    echo     å‡ºåŠ›å…ˆãƒ•ã‚¡ã‚¤ãƒ«å %dst_dir%%jar_name%
     echo.
     echo %~nx0 javadoc
-    echo     ƒhƒLƒ…ƒƒ“ƒg‚ğ¶¬‚µ‚Ü‚·
-    echo     o—ÍæƒtƒHƒ‹ƒ_ %doc_dir%
+    echo     ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’ç”Ÿæˆã—ã¾ã™
+    echo     å‡ºåŠ›å…ˆãƒ•ã‚©ãƒ«ãƒ€ %doc_dir%
     echo.
     echo %~nx0 all
     echo     clean -^> dl-depend -^> compile
-    echo     -^> archive -^> mvnrep -^> javadoc ‚Ì‡‚ÅÀs‚µ‚Ü‚·
+    echo     -^> archive -^> mvnrep -^> javadoc ã®é †ã§å®Ÿè¡Œã—ã¾ã™
     echo.
 
     goto :end
@@ -110,7 +110,7 @@ call :%1
 goto :end
 
 :clean
-    echo =============== ƒNƒŠ[ƒ“ŠJn ===============
+    echo =============== ã‚¯ãƒªãƒ¼ãƒ³é–‹å§‹ ===============
     del /s /q %out_dir%
     del /s /q %dst_dir%
     del /s /q %doc_dir%
@@ -126,24 +126,24 @@ goto :end
     mkdir %doc_dir%
     mkdir %lib_dir%
     mkdir %rep_dir%
-    echo =============== ƒNƒŠ[ƒ“I—¹ ===============
+    echo =============== ã‚¯ãƒªãƒ¼ãƒ³çµ‚äº† ===============
 exit /b
 
 :dl-depend
-    echo =============== ˆË‘¶ƒtƒ@ƒCƒ‹ƒ_ƒEƒ“ƒ[ƒhŠJn ===============
-    REM ˆË‘¶ƒtƒ@ƒCƒ‹‚ğƒfƒBƒŒƒNƒgƒŠ‚ğw’è‚µ‚Äƒ_ƒEƒ“ƒ[ƒh
+    echo =============== ä¾å­˜ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰é–‹å§‹ ===============
+    REM ä¾å­˜ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’æŒ‡å®šã—ã¦ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰
     set mvnDlDependCmd=call mvn dependency:copy-dependencies -f %pom_name% -DoutputDirectory=%lib_dir%
     echo %mvnDlDependCmd%
     %mvnDlDependCmd%
     if %errorlevel% neq 0 (
-        set error_msg=ˆË‘¶ƒtƒ@ƒCƒ‹ƒ_ƒEƒ“ƒ[ƒhƒGƒ‰[
+        set error_msg=ä¾å­˜ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã‚¨ãƒ©ãƒ¼
         goto :echo_error
     )
-    echo =============== ˆË‘¶ƒtƒ@ƒCƒ‹ƒ_ƒEƒ“ƒ[ƒhI—¹ ===============
+    echo =============== ä¾å­˜ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰çµ‚äº† ===============
 exit /b
 
 :compile
-    echo =============== ƒRƒ“ƒpƒCƒ‹ŠJn ===============
+    echo =============== ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«é–‹å§‹ ===============
     set javacCmd=javac^
         -d %out_dir%^
         -encoding %src_enc%^
@@ -154,14 +154,14 @@ exit /b
     echo %javacCmd%
     %javacCmd%
     if %errorlevel% neq 0 (
-        set error_msg=ƒRƒ“ƒpƒCƒ‹ƒGƒ‰[
+        set error_msg=ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã‚¨ãƒ©ãƒ¼
         goto :echo_error
     )
-    echo =============== ƒRƒ“ƒpƒCƒ‹I—¹ ===============
+    echo =============== ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«çµ‚äº† ===============
 exit /b
 
 :archive
-    echo =============== ƒA[ƒJƒCƒu‰»ŠJn ===============
+    echo =============== ã‚¢ãƒ¼ã‚«ã‚¤ãƒ–åŒ–é–‹å§‹ ===============
     set jarCmd=jar^
         -cf %dst_dir%%jar_name%^
         -C %out_dir%%mdl_name% .^
@@ -170,27 +170,27 @@ exit /b
     echo %jarCmd%
     %jarCmd%
     if %errorlevel% neq 0 (
-        set error_msg=ƒA[ƒJƒCƒu‰»ƒGƒ‰[
+        set error_msg=ã‚¢ãƒ¼ã‚«ã‚¤ãƒ–åŒ–ã‚¨ãƒ©ãƒ¼
         goto :echo_error
     )
-    echo =============== ƒA[ƒJƒCƒu‰»I—¹ ===============
+    echo =============== ã‚¢ãƒ¼ã‚«ã‚¤ãƒ–åŒ–çµ‚äº† ===============
 exit /b
 
 :mvnrep
-    echo =============== ƒŠƒ|ƒWƒgƒŠì¬ŠJn ===============
-@@@@REM w’èƒtƒ@ƒCƒ‹(jar‚Æpom)‚ğw’èƒfƒBƒŒƒNƒgƒŠ‚ÉƒfƒvƒƒC
-@@@@set mvnDeployCmd=call mvn deploy:deploy-file -Dfile=%dst_dir%%jar_name% -Durl=%rep_dir_uri% -DpomFile=%pom_name% -Dpackaging=jar
+    echo =============== ãƒªãƒã‚¸ãƒˆãƒªä½œæˆé–‹å§‹ ===============
+ã€€ã€€ã€€ã€€REM æŒ‡å®šãƒ•ã‚¡ã‚¤ãƒ«(jarã¨pom)ã‚’æŒ‡å®šãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ãƒ‡ãƒ—ãƒ­ã‚¤
+ã€€ã€€ã€€ã€€set mvnDeployCmd=call mvn deploy:deploy-file -Dfile=%dst_dir%%jar_name% -Durl=%rep_dir_uri% -DpomFile=%pom_name% -Dpackaging=jar
     echo %mvnDeployCmd%
     %mvnDeployCmd%
     if %errorlevel% neq 0 (
-        set error_msg=ƒŠƒ|ƒWƒgƒŠì¬ƒGƒ‰[
+        set error_msg=ãƒªãƒã‚¸ãƒˆãƒªä½œæˆã‚¨ãƒ©ãƒ¼
         goto :echo_error
     )
-    echo =============== ƒŠƒ|ƒWƒgƒŠì¬I—¹ ===============
+    echo =============== ãƒªãƒã‚¸ãƒˆãƒªä½œæˆçµ‚äº† ===============
 exit /b
 
 :javadoc
-    echo =============== ƒhƒLƒ…ƒƒ“ƒg¶¬ŠJn ===============
+    echo =============== ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆç”Ÿæˆé–‹å§‹ ===============
     set javadocCmd=javadoc ^
         --allow-script-in-comments ^
         -d %doc_dir% ^
@@ -202,10 +202,10 @@ exit /b
     echo %javadocCmd%
     %javadocCmd%
     if %errorlevel% neq 0 (
-        set error_msg=ƒhƒLƒ…ƒƒ“ƒg¶¬ƒGƒ‰[
+        set error_msg=ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆç”Ÿæˆã‚¨ãƒ©ãƒ¼
         goto :echo_error
     )
-    echo =============== ƒhƒLƒ…ƒƒ“ƒg¶¬I—¹ ===============
+    echo =============== ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆç”Ÿæˆçµ‚äº† ===============
 exit /b
 
 :echo_error
